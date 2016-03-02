@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="cn.com.shxt.model">
+	<class name="Loginfo" table="LOGINFO" lazy="true">
+	
+	<id name="log_date">
+			<column name="LOG_DATE"></column>
+		</id>
+	
+		<property name="log_message">
+			<column name="LOG_MESSAGE" length="30" ></column>
+		</property>	
+		
+		<property name="log_name">
+			<column name="LOG_NAME" length="30" ></column>
+		</property>	
+		
+	</class>
+
+
+
+
+</hibernate-mapping>

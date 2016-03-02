@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="cn.com.shxt.model">
+	<class name="Orderinfo" table="ORDERINFO" lazy="true">
+		<id name="id">
+			<column name="ID"></column>
+			<generator class="sequence">
+				<param name="sequence">ORDERINFO_ID</param>
+			</generator>
+		</id>
+	
+		<property name="pname">
+			<column name="PNAME" length="10" ></column>
+		</property>	
+		
+		<property name="dname">
+			<column name="DNAME" length="10" ></column>
+		</property>	
+		<property name="did">
+			<column name="DID" length="10" ></column>
+		</property>	
+		<property name="pid">
+			<column name="PID" length="10" ></column>
+		</property>	
+		
+		<property name="kname">
+			<column name="KNAME" length="10" ></column>
+		</property>	
+		
+		<property name="orderdate">
+			<column name="ORDERDATE" length="30" ></column>
+		</property>	
+		<property name="jiuzhenTime">
+			<column name="JIUZHENTIME" length="30" ></column>
+		</property>	
+		
+		<property name="orderstate">
+			<column name="ORDERSTATE" length="10"></column>
+		</property>	
+		
+		
+	</class>
+
+
+
+
+</hibernate-mapping>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="cn.com.shxt.model">
+	<class name="Powerinfo" table="POWERINFO" lazy="true">
+		<id name="id">
+			<column name="ID"></column>
+			<generator class="sequence">
+				<param name="sequence">POWERINFO_ID</param>
+			</generator>
+		</id>
+	
+		<property name="pname">
+			<column name="PNAME" length="10" unique="true"></column>
+		</property>	
+		
+		<property name="purl">
+			<column name="PURL" length="40" ></column>
+		</property>	
+		
+		<!-- 就差你了 -->
+		<property name="mid" insert="false" update="false">
+			<column name="MID"></column>
+			
+		</property>	
+		
+		<property name="pid">
+			<column name="PID" length="10"></column>
+		</property>	
+		
+		<set name="roleinfo" inverse="true"  lazy="false" table="powerinfo_roleinfo">
+			<key column="powerinfo_id"></key>
+			<many-to-many class="Roleinfo" column="roleinfo_id"></many-to-many>
+		</set>
+	</class>
+
+
+
+
+</hibernate-mapping>

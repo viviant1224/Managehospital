@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="cn.com.shxt.model">
+	<class name="Keshi" table="KESHI" lazy="true">
+		<id name="id">
+			<column name="ID"></column>
+			<generator class="sequence">
+				<param name="sequence">KESHI_ID</param>
+			</generator>
+		</id>
+	
+		<property name="kname">
+			<column name="KNAME" length="10" unique="true"></column>
+		</property>	
+		
+		<property name="kstate">
+			<column name="KSTATE" length="10"></column>
+		</property>	
+		
+		<set name="userinfodoc" cascade="all" inverse="false"  lazy="false">
+			<key column="keshi_id"></key>
+			<one-to-many class="UserinfoDoc"/>
+		</set>
+		
+		
+	</class>
+
+
+
+
+</hibernate-mapping>

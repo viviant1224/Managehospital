@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+<!-- 后台的，必须有登录拦截 -->
+	<package name="hibernate_struts" extends="struts-default">
+		<interceptors>
+			<interceptor name="Loginlanjie" class="cn.com.shxt.lanjie.Loginlanjie"></interceptor>
+			<interceptor-stack name="mystack_1">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="Loginlanjie"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="mystack_1"></default-interceptor-ref>
+		
+		<global-results>
+		<result name="login" type="redirect">/admin/login.jsp</result>
+		</global-results>
+		
+		<action name="*UserinfoDoc" class="cn.com.shxt.action_1.UserinfoDocAction" method="{1}">
+			<result name="add">/admin/addUserinfo.jsp</result>
+			<result name="input">/index.jsp</result>
+			<result name="search">/admin/ShowDoc.jsp</result>
+			<result name="commclose">/admin/commclose.jsp</result>
+			<result name="login" type="redirect">/admin/login.jsp</result>
+			<result name="update">/admin/updateUserinfo.jsp</result>
+			<result name="logut">/login.jsp</result>
+			<result name="showpatient">/admin/ShowPatient.jsp</result>
+			<result name="showallyuyue">/admin/ShowAllYuyue.jsp</result>
+			<result name="message">/500.jsp</result>
+			<result name="manageryuyueTime">/admin/ShowAllYuyueTime.jsp</result>
+			<result name="showalllog">/admin/ShowAllLoginfo.jsp</result>
+			<result name="success" type="redirect">/admin/main.jsp</result>
+		</action>
+		
+		<action name="*Zhuanjia" class="cn.com.shxt.action_1.ZhuanjiaAction" method="{1}">
+			<result name="showPaforZhuanjia">/admin/showpaforZhuanjia.jsp</result>
+			<result name="showyuyueforZhuanjia">/admin/ShowYuyueforZhuanjia.jsp</result>
+			<result name="showlogforZJ">/admin/ShowLoginfoforZhuanjia.jsp</result>
+			<result name="commclose">/admin/commclose.jsp</result>
+		</action>
+		
+		<action name="*Search" class="cn.com.shxt.action_1.Search" method="{1}">
+			<result name="searchUser">/admin/ShowDoc.jsp</result>
+			<result name="searchPower">/admin/ShowPower.jsp</result>
+			<result name="searchPa">/admin/ShowPatient.jsp</result>
+			<result name="searchyuyue">/admin/ShowAllYuyue.jsp</result>
+			<result name="searyuyueforZhuanjia">/admin/ShowYuyueforZhuanjia.jsp</result>
+			<result name="searLog">/admin/ShowAllLoginfo.jsp</result>
+			
+		</action>
+		
+		<action name="*Roleinfo" class="cn.com.shxt.action_1.RoleinfoAction" method="{1}">
+			<result name="ShowRole">/admin/ShowRole.jsp</result>
+			<result name="fenpei">/admin/fenpeiUser.jsp</result>
+			<result name="input">/500.jsp</result>
+			<result name="commclose">/admin/commclose.jsp</result>
+			<result name="message">/500.jsp</result>
+			<result name="fenpeiquanxian">/admin/fenpeiquanxian.jsp</result>
+		</action>
+		
+		<action name="*Powerinfo" class="cn.com.shxt.action_1.PowerinfoAction" method="{1}">
+			<result name="searchPower">/admin/ShowPower.jsp</result>
+			<result name="input">/500.jsp</result>
+		</action>
+		
+		<action name="*Keshiinfo" class="cn.com.shxt.action_1.KeshiAction" method="{1}">
+			<result name="searchKeshi">/admin/ShowKeshi.jsp</result>
+			<result name="fenpei">/admin/keshifenpeiUser.jsp</result>
+			<result name="input">/500.jsp</result>
+		</action>
+	</package>
+	<!-- 前台，可以不需要登录拦截 -->
+	<package name="Managehospital_1" extends="struts-default">
+		<action name="*Patient" class="cn.com.shxt.action_1.PatientAction" method="{1}">
+			<result name="search">/web/index.jsp</result>
+			<result name="success" type="redirect">/web/index.jsp</result>
+			<result name="input">/500.jsp</result>
+			<result name="showoneDoc">/web/ShowDoc.jsp</result>
+			<result name="initPro">/web/UserSign.jsp</result>
+			<result name="commclose">/admin/commclose.jsp</result>
+			<result name="updateInfo">/web/updateInfo.jsp</result>
+			<result name="yuyueInfo">/web/YuyueInfo.jsp</result>
+		</action>
+	</package>
+	<!-- 登录的，不需要拦截 -->
+	<package name="Managehospital" extends="struts-default">
+		<action name="loginAction" class="cn.com.shxt.action_1.LoginAction" >
+			<result name="success" type="redirect">/admin/main.jsp</result>
+			<result name="input" type="redirect">/admin/login.jsp</result>
+		</action>
+	</package>
+</struts>    

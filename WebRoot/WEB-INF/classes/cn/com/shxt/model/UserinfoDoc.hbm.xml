@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="cn.com.shxt.model">
+	<class name="UserinfoDoc" table="USERINFODOC" lazy="true">
+		<id name="id">
+			<column name="ID"></column>
+			<generator class="sequence">
+				<param name="sequence">USERINFODOC_ID</param>
+			</generator>
+		</id>
+	
+		<property name="dname">
+			<column name="DNAME" length="10" ></column>
+		</property>	
+		
+		<property name="password">
+			<column name="PASSWORD" length="10" ></column>
+		</property>	
+		
+		<property name="dstate">
+			<column name="DSTATE" length="20" ></column>
+		</property>	
+		
+		<property name="dbirthday">
+			<column name="DBIRTHDAY" length="30"></column>
+		</property>	
+		<property name="dimageFileName">
+			<column name="DIMAGEFILENAME" length="30" ></column>
+		</property>	
+		
+		<property name="dtel">
+			<column name="DTEL" length="20" ></column>
+		</property>
+		
+		<property name="info">
+			<column name="INFO" length="300" ></column>
+		</property>		
+		<many-to-one name="keshi" class="Keshi" column="keshi_id" lazy="false" fetch="join"></many-to-one>
+		
+		
+		<set name="patient" cascade="all" inverse="false"  lazy="false">
+			<key column="userinfodoc_id"></key>
+			<one-to-many class="Patient"/>
+		</set>
+		
+		<!-- 被控方 -->
+		<set name="roleinfo" inverse="true" lazy="false" table="userinfodoc_roleinfo">
+			<key column="userinfodoc_id"></key>
+			<many-to-many class="Roleinfo" column="roleinfo_id"></many-to-many>
+		</set>
+		
+		<!-- 主控方  主要操作的一方 -->
+		<set name="week"  lazy="false" table="userinfo_week">
+		<key column="userinfo_id"></key>
+			<many-to-many class="YuyueTime" column="week_id"></many-to-many>
+		</set>
+	</class>
+
+
+
+
+</hibernate-mapping>

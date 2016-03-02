@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="cn.com.shxt.model">
+	<class name="Patient" table="PATIENT" lazy="true">
+		<id name="id">
+			<column name="ID"></column>
+			<generator class="sequence">
+				<param name="sequence">PATIENT_ID</param>
+			</generator>
+		</id>
+	
+		<property name="pname">
+			<column name="PNAME" length="10" ></column>
+		</property>	
+		
+		<property name="password">
+			<column name="PASSWORD" length="20" ></column>
+		</property>	
+		
+		<property name="pimageFileName">
+			<column name="PIMAGEFILENAME" length="30" ></column>
+		</property>	
+		
+		<property name="pstate">
+			<column name="PSTATE" length="10"></column>
+		</property>	
+		
+		<property name="pbirthday">
+			<column name="PBIRTHDAY" length="30" ></column>
+		</property>	
+		
+		<property name="ptel">
+			<column name="PTEL" length="20"></column>
+		</property>	
+		
+		<property name="paddress">
+			<column name="PADDRESS" length="30"></column>
+		</property>	
+		
+		<property name="pmoney">
+			<column name="PMONEY" length="30" ></column>
+		</property>	
+		<property name="pquestion">
+			<column name="PQUESTION" length="30"></column>
+		</property>
+		
+		<property name="panswer">
+			<column name="PANSWER" length="10"></column>
+		</property>	
+		
+		<many-to-one name="userinfodoc" class="UserinfoDoc" column="userinfodoc_id" lazy="false" fetch="join"></many-to-one>
+	</class>
+
+
+
+
+</hibernate-mapping>
